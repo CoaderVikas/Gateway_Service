@@ -1,0 +1,8 @@
+#server port configuration
+server:
+  port: 9091
+
+#application name configiration
+spring:
+  application:
+    name: Gateway_Service
