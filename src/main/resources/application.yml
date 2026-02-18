@@ -1,8 +1,25 @@
 #server port configuration
 server:
-  port: 9091
+  port: 9093
 
 #application name configiration
 spring:
   application:
     name: Gateway_Service
+
+#addind route configuration
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+          - id: Auth_service
+            uri: http://localhost:9091
+            predicates:
+              - Path=/api/auth/**,/user/**
+            filters:
+              - AddRequestHeader=X-Route, authService
+
+#secreat key configuration
+jwt:
+   secret : ${JWT_SECRET}
